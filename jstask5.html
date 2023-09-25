@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--Code by Chris Youderian, ContactMetrics.com, http://contactmetrics.com/blog/validate-contact-form-jquery, Code released under an MIT license, http://opensource.org/licenses/MIT -->
+<html lang="en">
+
+<head>
+    <script type='text/javascript' src='jquery.min.js'></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<!-- Styles -->
+<style>
+    #contact label {
+        display: inline-block;
+        width: 100px;
+        text-align: right;
+    }
+
+    #contact_submit {
+        padding-left: 100px;
+    }
+
+    #contact div {
+        margin-top: 1em;
+    }
+
+    textarea {
+        vertical-align: top;
+        height: 5em;
+    }
+
+    .error {
+        display: none;
+        margin-left: 10px;
+    }
+
+    .error_show {
+        color: red;
+        margin-left: 10px;
+    }
+
+    input.invalid,
+    textarea.invalid {
+        border: 2px solid red;
+    }
+
+    input.valid,
+    textarea.valid {
+        border: 2px solid green;
+    }
+</style>
+
+<!-- JavaScript Code -->
+
+
+<body>
+    <form id="contact" method="post" onsubmit="return validateform()">
+        <!-- Name -->
+        <table>
+            <tr>
+                <td id="invalid-msg"></td>
+            </tr>
+            <tr>
+                <td>
+        <div>
+            <label for="contact_name">Name:</label>
+            <input type="text" id="i1" name="name" ></input>
+
+        </div>
+        </td>
+    </tr>
+      <tr>
+        <td>
+        <!-- Email -->
+        <div>
+            <label for="contact_email">Email:</label>
+            <input type="email" id="i2" name="email"></input>
+
+        </div>
+        </td>
+        </tr>
+        <tr>
+            <td>
+        <!--Website -->
+        <div>
+            <label for="contact_website">Website:</label>
+            <input type="url" id="i3" name="website" ></input>
+
+        </div>
+        </td>
+        </tr>
+        <tr>
+            <td>
+        <!-- Message -->
+        <div>
+            <label for="contact_message">Message:</label>
+            <textarea id="i4" name="message" ></textarea>
+
+        </div>
+        </td>
+        </tr>
+        <tr>
+            <td>
+        <!-- Submit Button -->
+        <div id="contact_submit">
+            <button type="submit">Submit</button>
+        </div>
+        </td>
+        </tr>
+    </form>
+
+    <script>
+        function validateform() {
+            var name = document.getElementById("i1").value
+            var email= document.getElementById("i2").value
+            var website = document.getElementById("i3").value
+            var message = document.getElementById("i4").value
+            
+    
+    
+            if (name == null || name == "") {
+                document.getElementById("invalid-msg").innerHTML = `<p class="alert alert-danger">This field is required</p>`;
+                    return false;
+            }
+            else if (email == null || email == "") {
+                document.getElementById("invalid-msg").innerHTML = `<p class="alert alert-danger">A valid email address is required</p>`;
+                    return false;
+            }
+            else if (website == null || website == "") {
+                document.getElementById("invalid-msg").innerHTML = `<p class="alert alert-danger">A valid url is required</p>`;
+                    return false;
+            }
+            else if (message == null || message == "") {
+                document.getElementById("invalid-msg").innerHTML = `<p class="alert alert-danger">A valid message is required</p>`;
+                    return false;
+            }
+            return true;
+        }  
+    </script>
+</table>
+</body>
+
+</html>
